@@ -6,11 +6,8 @@ Created on Wed Jul 15 18:40:08 2020
 """
 
 import os
-os.environ['PATH']="D:/openslide-win64-20171122/bin"+';'+os.environ['PATH']
 import openslide
-import xml
 import xml.etree.ElementTree as ET
-import PIL
 import PIL.ImageDraw as ImageDraw
 import PIL.Image as Image
 from shapely.geometry import Polygon, Point
@@ -27,7 +24,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.autograd import Variable
-import imageio
 
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
@@ -172,9 +168,10 @@ class TSDataset_apply_overlap(data_utils.Dataset):
 
 class Args:
     def __init__(self):
-        self.root_dir = "D:/Ashel-slide/458601"
-        self.slidedir='D:/Ashel-slide/458599.svs'
-        self.annotdir='D:/Ashel-slide/458599.xml'
+        self.root_dir = "~/ashel-slide/458599"
+        self.output_dir='~/ashel-slide/458599/a603'
+        self.slidedir='~/ashel-slide/458603.svs'
+        self.annotdir='~/ashel-slide/458603.xml'
         self.patch_shape = (92,92)
         self.model = Attention_92()
         self.model_path = "model_92_100.pth"
@@ -238,8 +235,8 @@ if args.overlap:
 hot_map_instance /= hot_map_count
 hot_map_bag /= hot_map_count
 
-np.save(os.path.join(args.root_dir,'hot_map_instance_92_100_601_overlap.npy'), hot_map_instance)
-np.save(os.path.join(args.root_dir,'hot_map_bag_92_100_601_overlap.npy'), hot_map_bag)
+np.save(os.path.join(args.output_dir,'hot_map_instance.npy'), hot_map_instance)
+np.save(os.path.join(args.output_dir,'hot_map_bag.npy'), hot_map_bag)
 
 
 """
@@ -272,7 +269,7 @@ cb.set_ticks(ticks)
 cb.set_ticklabels(ticks*(vmax-vmin) + vmin)
 ax.set_title("Hot map")
 f.show()
-plt.savefig(os.path.join(args.root_dir,"hot_map.png"))
+plt.savefig(os.path.join(args.output_dir,"hot_map.png"))
 
 
 def read_annotation(annotdir):
@@ -289,8 +286,8 @@ def read_annotation(annotdir):
                 points_arr_stroma.append((int(v.attrib['X']), int(v.attrib['Y'])))
     return points_arr_tumor, points_arr_stroma
 
-annotdir = 'D:/Ashel-slide/458601.xml'
-#annotdir = args.annotdir
+
+annotdir = args.annotdir
 points_arr_tumor, points_arr_stroma = read_annotation(annotdir)
 tumor_x = [i[0]//92 for i in points_arr_tumor ]
 tumor_y = [i[1]//92 for i in points_arr_tumor ]
@@ -313,7 +310,7 @@ cb.set_ticks(ticks)
 cb.set_ticklabels(ticks*(vmax-vmin) + vmin)
 ax.set_title("WSI + Hot map + Annotation")
 f.show()
-plt.savefig(os.path.join(args.root_dir,"hot_map_wsi.png"))
+plt.savefig(os.path.join(args.output_dir,"hot_map_wsi.png"))
 
 wsi_hr = slide_ob.get_thumbnail((slide_ob.dimensions[0]//10,slide_ob.dimensions[1]//10))
 wsi_hr = np.array(wsi_hr)
@@ -328,4 +325,4 @@ ax.scatter(stroma_x_hr,stroma_y_hr, c='g',label = 'stroma')
 ax.legend()
 ax.set_title("WSI + Annotation")
 f.show()
-plt.savefig(os.path.join(args.root_dir,"wsi.png"))
+plt.savefig(os.path.join(args.output_dir,"wsi.png"))
