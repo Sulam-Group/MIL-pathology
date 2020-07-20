@@ -168,10 +168,10 @@ class TSDataset_apply_overlap(data_utils.Dataset):
 
 class Args:
     def __init__(self):
-        self.root_dir = "~/ashel-slide/458599"
-        self.output_dir='~/ashel-slide/458599/a603'
-        self.slidedir='~/ashel-slide/458603.svs'
-        self.annotdir='~/ashel-slide/458603.xml'
+        self.root_dir = "/home/zhenzhen/ashel-slide/458599"
+        self.output_dir='/home/zhenzhen/ashel-slide/458599/a603'
+        self.slidedir='/home/zhenzhen/ashel-slide/458603.svs'
+        self.annotdir='/home/zhenzhen/ashel-slide/458603.xml'
         self.patch_shape = (92,92)
         self.model = Attention_92()
         self.model_path = "model_92_100.pth"
