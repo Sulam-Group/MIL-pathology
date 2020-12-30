@@ -172,7 +172,7 @@ for batch_idx, (patch, upperLeft, label_region,label_tissue) in enumerate(patch_
     if label_tissue==1:
         print(batch_idx, label_region, label_tissue, upperLeft_x, upperLeft_y)
         patch_to_save = Image.fromarray(patch)
-        patch_to_save.save(os.path.join(args.save_root_dir,str(batch_idx)+'.png'))
+        patch_to_save.save(os.path.join(args.save_root_dir,str(row_id)+'_'+str(col_id)+'.png'))
 
 with open('results/tile_'+args_io.slide_ID+'_'+args_io.patch_shape+'_'+args_io.stride+'_'+args_io.layer+'.npy','wb') as f:
     np.save(f,Tile_array)
