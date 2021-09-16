@@ -175,6 +175,6 @@ python apply_model.py ../Data test_016 .tif model_test_016.pth . . .
 We can not actually upload our test WSI, `test_016.tif` to the `/Data` in this repository due to the space limit of Github, but you can found it in the [google drive](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
 
 ### Post-processing
-Post-processing procedure and the illustration of results can be found in `post_process.ipynb`.
+Post-processing procedure and the illustration of results can be found in [`post_process.ipynb`](https://github.com/Sulam-Group/MIL-pathology/blob/master/Post-process.ipynb).
 
 ## Publication
