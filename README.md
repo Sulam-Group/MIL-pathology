@@ -84,7 +84,7 @@ optional arguments:
   --gpu GPU             gpu
 
 ```
-- Template command
+#### Template command
 ```
 cd DkNN
 python train_model.py ../Data test_016 .tif ../coarse_annotations.sav . 
@@ -166,7 +166,7 @@ optional arguments:
   --unit UNIT           Samllest unit when cropping patches, default is 256
   --gpu GPU             gpu
 ```
-- Template command
+#### Template command
 ```
 cd LC_MIL
 python train_model.py ../Data test_016 .tif ../coarse_annotations.sav . 
@@ -176,3 +176,5 @@ We can not actually upload our test WSI, `test_016.tif` to the `/Data` in this r
 
 ### Post-processing
 Post-processing procedure and the illustration of results can be found in `post_process.ipynb`.
+
+## Publication
