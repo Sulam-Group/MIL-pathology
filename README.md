@@ -1,13 +1,13 @@
 # Refining Coarse Annotations on Single Whole-Slide Image
 Detailed and exhausitive annotations on whole-slide images (WSI) is extremely labor-intensive and time-consuming. In this repository, we provide implementation of two methods -- (1) Deep k-NN (DkNN); (2) Label Cleaning Multiple Instance Learning -- for refining these coarse annotations, and producing a more accurate version of annotations. The figure below shows an example of the coarse annotations and the refined annotations produced by one of our method (LC-MIL). 
-![image.png](https://boostnote.io/api/teams/m3RRYyWgW/files/971384651b34f3d66ffbcbd396653b8bd7fc9fc9532a5e22d21f2cbf3648d1d7-image.png)
+![image.png](https://github.com/Sulam-Group/MIL-pathology/blob/master/illustration.png)
 Noticeably, although both methods are machine learning based, the refinement can be conducted on each single slide, and no externel data is needed.
 
 ## Dataset
 - [CAMELYON16](https://camelyon16.grand-challenge.org/)
 - [PAIP2019](https://paip2019.grand-challenge.org/)
 - [PAIP2020](https://paip2020.grand-challenge.org/Dataset/)
-- One WSI for test: https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing
+- One WSI form CAMELYON16 for test : [`test_016.tif`](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
 
 ## Usage
 ### DkNN
