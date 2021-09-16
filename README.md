@@ -7,7 +7,7 @@ Noticeably, although both methods are machine learning based, the refinement can
 - [CAMELYON16](https://camelyon16.grand-challenge.org/)
 - [PAIP2019](https://paip2019.grand-challenge.org/)
 - [PAIP2020](https://paip2020.grand-challenge.org/Dataset/)
-- One WSI for test: 
+- One WSI for test: https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing
 
 ## Usage
 ### DkNN
@@ -46,8 +46,7 @@ optional arguments:
                         Step size when decay learning rate, default is 1
   --reg REG             Reg,default is 10e-5
 ```
-### Applying/Inference
-#### Training
+#### Applying/Inference
 ```
 python apply_model.py 
 
@@ -93,6 +92,7 @@ python apply_model.py ../Data test_016 .tif ../coarse_annotations.sav model_test
 We can not actually upload our test WSI, `test_016.tif` to the `/Data` in this repository due to the space limit of Github, but you can found it in the [google drive](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
 
 ### LC-MIL
+#### Training
 ```
 cd LC_MIL
 python train_model.py 
