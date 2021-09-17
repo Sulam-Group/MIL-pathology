@@ -94,7 +94,6 @@ We can not actually upload our test WSI, `test_016.tif` to the `/Data` in this r
 ### LC-MIL
 #### Training
 ```
-cd LC_MIL
 python train_model.py 
 
 positional arguments:
