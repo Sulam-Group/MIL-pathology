@@ -1,7 +1,7 @@
 # Refining Coarse Annotations on Single Whole-Slide Image
-Detailed and exhausitive annotations on whole-slide images (WSI) are extremely labor-intensive and time-consuming. In this repository, we provide implementation of two methods -- (1) Deep k-NN (DkNN); (2) Label Cleaning Multiple Instance Learning -- for refining these coarse annotations, and producing a more accurate version of annotations. The figure below shows an example of the coarse annotations and the refined annotations produced by one of our method (LC-MIL). 
+Detailed and exhausitive annotations on whole-slide images (WSI) are extremely labor-intensive and time-consuming. In this repository, we provide implementation of two methods -- (1) Deep k-NN (DkNN); (2) Label Cleaning Multiple Instance Learning (LC-MIL) -- for refining these coarse annotations, and producing a more accurate version of annotations. The figure below shows an example of the coarse annotations and the refined annotations produced by one of our method (LC-MIL). 
 ![image.png](https://github.com/Sulam-Group/MIL-pathology/blob/master/illustration.png)
-Noticeably, although both methods are machine learning based, the refinement can be conducted on each single slide, and no externel data is needed.
+Noticeably, although both methods are machine learning based, the refinement can be conducted on each single slide, and **NO externel data is needed**.
 
 ## Dataset
 - [CAMELYON16](https://camelyon16.grand-challenge.org/)
@@ -36,7 +36,7 @@ optional arguments:
                         encouraged to write customed function
   --focal_loss FOCAL_LOSS
                         Whether or not to use focal loss (True: using focal
-                        loss; Flase: using cross entropy), default is CE
+                        loss; Flase: using cross entropy), default is false
   --patch_shape PATCH_SHAPE
                         Patch shape(size), default is 256
   --unit UNIT           Samllest unit when cropping patches, default is 256
@@ -76,7 +76,7 @@ optional arguments:
                         encouraged to write customed function
   --focal_loss FOCAL_LOSS
                         Whether or not to use focal loss (True: using focal
-                        loss; Flase: using cross entropy), default is CE
+                        loss; Flase: using cross entropy), default is False
   --patch_shape PATCH_SHAPE
                         Patch shape(size), default is 256
   --unit UNIT           Samllest unit when cropping patches, default is 256
@@ -89,7 +89,7 @@ cd DkNN
 python train_model.py ../Data test_016 .tif ../coarse_annotations.sav . 
 python apply_model.py ../Data test_016 .tif ../coarse_annotations.sav model_test_016.pth . . . 
 ```
-We can not actually upload our test WSI, `test_016.tif` to the `/Data` in this repository due to the space limit of Github, but you can found it in the [google drive](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
+We can not actually upload our test WSI, `test_016.tif` to this repository due to the space limit of Github, but you can find it in the [google drive](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
 
 ### LC-MIL
 #### Training
@@ -171,9 +171,19 @@ cd LC_MIL
 python train_model.py ../Data test_016 .tif ../coarse_annotations.sav . 
 python apply_model.py ../Data test_016 .tif model_test_016.pth . . . 
 ```
-We can not actually upload our test WSI, `test_016.tif` to the `/Data` in this repository due to the space limit of Github, but you can found it in the [google drive](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
+We can not actually upload our test WSI, `test_016.tif` to this repository due to the space limit of Github, but you can find it in the [google drive](https://drive.google.com/file/d/1ArNlIWZtqfHHb_9S85iIocmSVaHgCQBI/view?usp=sharing)
 
 ### Post-processing
-Post-processing procedure and the illustration of results can be found in [`Post-process.ipynb`](https://github.com/Sulam-Group/MIL-pathology/blob/master/Post-process.ipynb).
+Post-processing procedure for both methods (DkNN and LC-MIL), and the illustration can be found in [`Post-process.ipynb`](https://github.com/Sulam-Group/MIL-pathology/blob/master/Post-process.ipynb).
 
 ## Publication
+```
+@misc{wang2021label,
+      title={Label Cleaning Multiple Instance Learning: Refining Coarse Annotations on Single Whole-Slide Images}, 
+      author={Zhenzhen Wang and Aleksander S. Popel and Jeremias Sulam},
+      year={2021},
+      eprint={2109.10778},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
